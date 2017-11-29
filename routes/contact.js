@@ -51,9 +51,9 @@ router.get('/:id', (req, res) => { // ขอ contact id ที่ส่งมา
 router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี id ที่ส่งมา
     var contact = req.body;
     for(i=0 ; i < contacts.length ; i++){
-        if(Contactlist[i].First_Name == contact.First_Name)
+        if(contacts[i].First_Name == contact.First_Name)
             { 
-                Contactlist[i] = contact
+                contacts[i] = contact;
                 break; 
             }
             
