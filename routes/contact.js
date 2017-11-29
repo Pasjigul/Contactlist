@@ -21,6 +21,7 @@ router.get('/', (req, res) => { // ดู contact ทั้งหมด  **ต�
     }
     else {
         res.json(contacts);
+        
     }
 });
 
@@ -48,16 +49,23 @@ router.get('/:id', (req, res) => { // ขอ contact id ที่ส่งมา
 });
 
 router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี id ที่ส่งมา
-    var 
-
-
-
-
-
+    var contact = req.body;
+    for(i=0 ; i < contacts.length ; i++){
+        if(contacts[i].First_Name == contact.First_Name)
+            { 
+                contacts[i] = contact;
+                break; 
+            }
+            
+     }
+     res.json(contacts)
+    
 });
 
 
 router.delete('/:id', (req, res) => { // ลบ contact ที่มี id ที่ส่งมา
+    var id = req.params.id;
+
 
     var id = req.params.id;
     for(i=0 ; i < contacts.length ; i++){
