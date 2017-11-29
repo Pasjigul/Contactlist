@@ -59,7 +59,14 @@ router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี i
 
 router.delete('/:id', (req, res) => { // ลบ contact ที่มี id ที่ส่งมา
 
-
+    var id = req.params.id;
+    for(i=0 ; i < contacts.length ; i++){
+        if(contacts[i].id == contact.id) {
+            contacts.splice(id);
+            break;
+        }
+    }
+    res.json(contacts);
 
 
 
