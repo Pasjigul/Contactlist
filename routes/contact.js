@@ -41,7 +41,7 @@ router.post('/', (req, res) => { // เพิ่ม contact
 router.get('/:id', (req, res) => { // ขอ contact id ที่ส่งมา
     var found = false;
     for(i = 0;i < contacts.length; i++){
-        if(contacts[i].id === req.params.id){
+        if(contacts[i].id === parseInt(req.params.id)){
             found = true;
             res.json(contacts[i]);
             break;
@@ -56,7 +56,7 @@ router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี i
 
     var contact = req.body;
     for(i=0 ; i < contacts.length ; i++){
-        if(contacts[i].id === req.params.id)
+        if(contacts[i].id ===  parseInt(req.params.id))
             { 
                 contacts[i] = req.body;
                 break; 
@@ -70,23 +70,20 @@ router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี i
 
 router.delete('/:id', (req, res) => { // ลบ contact ที่มี id ที่ส่งมา
     var id = req.params.id;
-
-
-    var id = req.params.id;
+    var found = false;
     for(i=0 ; i < contacts.length ; i++){
-        if(contacts[i].id == contact.id) {
-            contacts.splice(id);
+        if(contacts[i].id ===  parseInt(id)) {
+            contacts.splice(i, 1);
+            found = true;
             break;
         }
     }
-    res.json('delete success');
-
-
-
-
-
-
-
+    if(found) {
+        res.json('delete success');
+    }
+    else {
+        res.json('not success');
+    }
 });
 
 
