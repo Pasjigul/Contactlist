@@ -3,13 +3,21 @@ var router = express.Router();
 
 var contacts = [];
 
-router.get('/:name', (req, res) => { // ค้นหา contact ที่มี first name ตรงกับ name ที่ส่งมา
-    res.json(req.params.name);
-});
 
 
 router.get('/', (req, res) => { // ดู contact ทั้งหมด  **ตัวอย่าง**
-    res.json(contacts);    
+    if(req.query.name) {
+        contacts.forEach(function(contact) {
+            if(contact.first_name === req.query.name) {
+                res.json(contact);
+            }
+        });
+        res.status(401);
+        res.json('not found name = ' + " " + req.query.name);
+    }
+    else {
+        res.json(contacts);
+    }
 });
 
 router.post('/', (req, res) => { // เพิ่ม contact
