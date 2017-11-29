@@ -39,16 +39,21 @@ router.post('/', (req, res) => { // เพิ่ม contact
 });
 
 router.get('/:id', (req, res) => { // ขอ contact id ที่ส่งมา
-
-
-
-
-
-
-
+    var found = false;
+    for(i = 0;i < contacts.length; i++){
+        if(contacts[i].id == req.params.id){
+            found = true;
+            res.json(contacts[i]);
+            break;
+        }
+    }
+    if(!found) {
+        res.json('not found');
+    }
 });
 
 router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี id ที่ส่งมา
+
     var contact = req.body;
     for(i=0 ; i < contacts.length ; i++){
         if(contacts[i].First_Name == contact.First_Name)
@@ -59,7 +64,7 @@ router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี i
             
      }
      res.json(contacts)
-    
+
 });
 
 
