@@ -26,19 +26,11 @@ router.post('/', (req, res) => { // เพิ่ม contact
 });
 
 router.get('/:id', (req, res) => { // ขอ contact id ที่ส่งมา
-
-
-
-
-
-
-
+    let id = req.params.id
+        res.json(contacts[id]);
 });
 
 router.put('/:id', (req, res) => {  // แก้ไข contact ที่มี id ที่ส่งมา
-
-
-
 
 
 
