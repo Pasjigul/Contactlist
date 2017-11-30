@@ -8,8 +8,14 @@ var contacts = [
     {id:3,First_Name:'Nattida',Last_Name:'Rattanamalee',email: '58160461@go.buu.ac.th'},
 ];
 
+
+
+router.get('/contacts', (req, res) => { // ดู contact ทั้งหมด
+    res.json(contacts)
+})
+
 var keepname = [];
-router.get('/', (req, res) => { // ดู contact ทั้งหมด  **ตัวอย่าง**
+router.get('/', (req, res) => { // ค้นหา name จาก ตัวอักษรตัวแรก
     if(req.query.name) {
         contacts.forEach(function(contact) {
             if(contact.First_Name === req.query.name) {
