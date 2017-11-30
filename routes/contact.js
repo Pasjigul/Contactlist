@@ -10,7 +10,7 @@ var contacts = [
 
 
 
-router.get('/contacts', (req, res) => { // ดู contact ทั้งหมด
+router.get('/', (req, res) => { // ดู contact ทั้งหมด
     res.json(contacts)
 })
 
