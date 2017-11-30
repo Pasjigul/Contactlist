@@ -8,16 +8,24 @@ var contacts = [
     {id:3,First_Name:'Nattida',Last_Name:'Rattanamalee',email: '58160461@go.buu.ac.th'},
 ];
 
-
+var keepname = [];
 router.get('/', (req, res) => { // ดู contact ทั้งหมด  **ตัวอย่าง**
     if(req.query.name) {
         contacts.forEach(function(contact) {
-            if(contact.first_name === req.query.name) {
-                res.json(contact);
+            if(contact.First_Name === req.query.name) {
+                keepname.push(contact);  
             }
+
         });
-        res.status(401);
-        res.json('not found name = ' + " " + req.query.name);
+        if(keepname.length > 0){
+            res.json(keepname);
+        }
+        else{
+
+            res.status(401);
+            res.json('not found name = ' + " " + req.query.name);
+        }
+       
     }
     else {
         res.json(contacts);
